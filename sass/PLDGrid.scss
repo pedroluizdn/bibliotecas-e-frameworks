@@ -1,0 +1,37 @@
+/*
+ *  Grid CSS - Autor: Pedro Luiz;
+ *  Criado no Pre-processador SASS;
+ *  Seguindo alguns conceitos de SUIT CSS;
+ */
+
+.pld-Grid {
+  display: table;
+}
+
+.pld-Grid > * {
+  float: left;
+}
+
+@mixin createGrid($mq){
+  @for $a from 1 through 24{
+    .pld-Grid-col#{$mq}--#{$a}{
+      width: ((100% / 24) * $a);
+    }
+  }
+}
+
+@media only screen and (max-width: 40em){
+  @include createGrid($mq: 'XS');
+}
+
+@media only screen and (min-width: 40em) and (max-width: 65em){
+  @include createGrid($mq: 'SM');
+}
+
+@media only screen and (min-width: 65em) and (max-width: 80em){
+  @include createGrid($mq: 'MD');
+}
+
+@media only screen and (min-width: 80em){
+  @include createGrid($mq: 'LG');
+}
